@@ -1,4 +1,4 @@
-# Global camera-trap research in transition
+# CT_LLM_review
 
 This repository contains the Python and R code, prompts, supporting files, and dataset associated with the paper:
 
