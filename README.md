@@ -16,11 +16,11 @@ The `Python_Project` contains the code used for the LLM-assisted systematic revi
 * abstract screening; and
 * abstract metadata extraction.
 
-The project also includes a `prompts` folder containing the prompt templates used to guide the large language models. The `data` folder contains intermediate data files generated throughout the workflow, including `data_descriptor.csv`, which describes the purpose and structure of each dataset.
+The project also includes a `prompts` folder containing the prompt templates used to guide the large language models. The `data` folder contains intermediate data files generated throughout the workflow, including `data/data_descriptor.csv`, which describes the purpose and structure of each dataset.
 
 ## R data processing and analysis
 
-All metadata processing, cleaning, standardisation, and analysis were conducted using R. The `R_Project` contains the scripts used to process the extracted metadata, conduct technical validation, generate the final dataset, and perform the analyses presented in the article.
+All metadata processing, cleaning, standardisation, and analysis were conducted using R. The `R_Project` contains the scripts used to process the extracted metadata, conduct technical validation, generate the final dataset, and perform the analyses presented in the article. A data_descriptor.csv describing the purpose and structure of each dataset can be found in the data folder.
 
 ## Repository structure
 
