@@ -25,7 +25,7 @@ All metadata processing, cleaning, standardisation, and analysis were conducted 
 ## Repository structure
 
 ```text
-global-camera-trap-literature-metadata/
+CT_LLM_review/
 │
 ├── 2026_CT_review_metadata.csv
 │
