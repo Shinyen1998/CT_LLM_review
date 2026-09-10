@@ -54,4 +54,4 @@ CT_LLM_review/
 
 ## Reproducibility
 
-The repository provides the dataset, code, prompt templates, and supporting documentation needed to understand and reproduce the data-processing workflow described in the article. The archived version of this repository associated with the published study is available through Zenodo [TO BE UPDATED].
+The repository provides the dataset, code, prompt templates, and supporting documentation needed to understand and reproduce the data-processing workflow described in the article. The archived version of this repository associated with the published study, as well as the data folder in the Python_project and R_project folder is available through Zenodo [TO BE UPDATED].
