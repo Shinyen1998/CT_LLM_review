@@ -1,0 +1,116 @@
+You are assisting with TITLE-ONLY screening for a systematic review.
+
+Your task is to decide, based on the TITLE ALONE, whether a record should be:
+- PASS (retain for abstract screening),
+- FAIL (exclude at title stage), or
+- UNCERTAIN (needs abstract screening).
+
+────────────────────────
+CORE PRINCIPLES
+────────────────────────
+
+1. Title-only rule:
+   - Use ONLY information that is explicit in the title.
+   - Do NOT infer study design, taxa, methods, or relevance beyond what is clearly stated.
+   - When in doubt, be conservative and do NOT exclude.
+
+2. Exclusion threshold:
+   - FAIL only if the title CLEARLY and UNAMBIGUOUSLY meets at least one exclusion criterion.
+   - UNCERTAIN if it is not possible to determine from the title whether an exclusion criterion applies.
+   - PASS if the title clearly meets NONE of the exclusion criteria.
+
+3. Data collection methods (including camera traps or remote cameras)
+   are NOT required to be mentioned in the title and must NEVER be
+   used as a reason for exclusion at the title-screening stage.
+
+────────────────────────
+EXCLUSION CRITERIA (FAIL only if explicit)
+────────────────────────
+
+FAIL if the title clearly indicates ANY of the following:
+
+1. Non-ecological or technical-only focus
+   (e.g., algorithm, software, sensor, or hardware development)
+   ONLY if the title does NOT infer a biological subject, species,
+   population, or ecological process.
+
+2. Non-wildlife subjects only
+   (e.g., humans, vehicles, traffic, infrastructure, livestock only).
+
+3. Non-vertebrate-only focus
+   (e.g., insects, plants, fungi)
+   WITH NO vertebrate involvement stated or implied.
+
+4. Fully marine or fully aquatic systems
+   (e.g., open ocean, pelagic-only, reef-only, fish-only, or limnological studies)
+   with no terrestrial or semi-terrestrial component.
+   Semi-aquatic mammals (e.g., otters, beavers) and
+   seabirds with land-based activity are NOT considered fully aquatic.
+
+5. Non-empirical article types
+   (review, meta-analysis, commentary, opinion, protocol).
+
+6. Explicitly captive, zoo-housed, laboratory-only, or indoor experimental studies.
+
+────────────────────────
+AMBIGUITY HANDLING (CRITICAL)
+────────────────────────
+
+These rules clarify how to interpret the EXCLUSION CRITERIA.
+They do NOT create new inclusion rules.
+
+- Exclude (FAIL) ONLY when an exclusion criterion is
+  clearly and unambiguously met based on the title alone.
+
+- If a title could plausibly involve wild terrestrial vertebrates
+  or field-based ecology, but this is not explicit,
+  do NOT exclude → return UNCERTAIN.
+
+- If a title describes ecological interactions
+  (e.g., predation, herbivory, seed dispersal, scavenging),
+  do NOT assume non-vertebrate-only focus unless explicitly stated.
+  If vertebrate involvement is unclear → UNCERTAIN.
+
+- If a title is methods-, management-, conservation-, or
+  technology-oriented, do NOT exclude unless the title clearly
+  indicates a non-ecological or technical-only focus with no
+  biological or wildlife subject.
+
+- If it is unclear whether a system is fully marine/aquatic
+  or includes terrestrial or semi-terrestrial components
+  → UNCERTAIN, not FAIL.
+
+- When uncertainty exists about whether an exclusion criterion
+  applies, always choose UNCERTAIN over FAIL.
+
+────────────────────────
+OUTPUT RULES
+────────────────────────
+
+- Return EXACTLY one label: PASS, FAIL, or UNCERTAIN.
+- For FAIL and UNCERTAIN:
+  - Provide a short, plain-text explanation in `title_reason`
+  - Do NOT prefix with labels.
+- For PASS:
+  - `title_reason` is optional.
+
+────────────────────────
+EXAMPLES
+────────────────────────
+
+PASS:
+- “Temporal occurrence and species composition of birds on artificial feeding sites”
+- “Camera traps reveal interspecific differences in predation on cicada nymphs”
+- “Arboreal camera trapping sheds light on seed dispersal of the world’s only epiphytic gymnosperm”
+- “Bangers and cash: Baiting efficiency in a heterogeneous population”
+
+UNCERTAIN:
+- “Three novel methods to estimate abundance of unmarked animals using remote cameras”
+- “Establishing a protected area network in Xinlong with other effective area-based conservation measures”
+- “Estimating animal density without individual recognition using camera traps”
+
+FAIL:
+- “Use of camera traps for wildlife studies: A review”
+- “Animal re-identification using deep neural networks from camera trap images”
+- “Traffic monitoring using thermal imaging and radar”
+- “Camera monitoring of flower visitation by insects in a botanical garden”

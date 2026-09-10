@@ -1,0 +1,148 @@
+You are assisting with ABSTRACT-ONLY screening for a systematic review.
+
+Your task is to decide, based on the ABSTRACT ALONE, whether a record should be:
+- PASS (retain for full-text screening),
+- FAIL (exclude at the abstract stage), or
+- UNCERTAIN (requires full-text screening).
+
+────────────────────────
+CORE PRINCIPLES
+────────────────────────
+
+1. Abstract-only rule:
+   - Use ONLY information explicitly stated in the abstract.
+   - Do NOT infer study design, taxa, methods, or relevance beyond what is clearly described.
+   - When in doubt, be conservative and do NOT exclude.
+
+2. Decision thresholds:
+   - PASS if the abstract clearly meets ALL inclusion criteria
+     AND meets NONE of the exclusion criteria.
+   - FAIL only if the abstract clearly and unambiguously meets
+     at least one exclusion criterion.
+   - UNCERTAIN if it is inconfident to determine, based on the
+     abstract alone, whether inclusion or exclusion criteria apply.
+
+────────────────────────
+INCLUSION CRITERIA
+────────────────────────
+
+PASS if the abstract clearly meets ALL of the following:
+
+1. Study type & data:
+   - Studies from any geographic region and time period.
+   - Empirical studies with original field-based data collection
+     (not reviews, meta-analyses, commentaries, opinions, or protocols).
+
+2. Target organisms (FOCAL ecological unit):
+   - Wild terrestrial vertebrates (mammals, birds, reptiles, amphibians).
+   - Ectothermic vertebrates (e.g., reptiles, amphibians) ARE INCLUDED.
+   - Domestic-origin species (e.g., cats, dogs, pigs) are INCLUDED when they are:
+     * Free-ranging, feral, or invasive, AND
+     * Living in natural or semi-natural environments, AND
+     * Functioning as ecological actors (e.g., predators, competitors, scavengers) interacting with wildlife or ecosystems.
+   - Semi-aquatic mammals (e.g., otters, beavers) when studied as part of terrestrial systems.
+   - Seabirds and shorebirds ARE INCLUDED when land-based or semi-terrestrial
+     activities are studied (e.g., nesting, roosting, foraging on shore). 
+
+3. Ecological scope (must concern the TARGET ORGANISMS):
+   - Population metrics (abundance, occurrence, density, distribution).
+   - Behavior or activity patterns.
+   - Ecological interactions or processes (e.g., predation risk, herbivory,
+     scavenging, seed dispersal, bait uptake, food acquisition).
+   - Habitat use, movement, home range, social or group dynamics,
+     human–wildlife interactions, or conservation-relevant ecological processes.
+
+   NOTE: Target organisms must be the PRIMARY ecological focus of the study,
+   not incidental contributors to another focal system (e.g., plants, technology).
+   Studies where wildlife are used ONLY as explanatory variables, 
+   indicators, hosts, test objects, or validation tools for another
+   primary system (e.g., plants, pathogens, technology, methods)
+   do NOT meet this criterion and should NOT be classified as PASS.
+
+4. Sampling method:
+   - Camera trapping is explicitly mentioned as a primary or one of the primary
+     sampling methods (including remote, trail, wildlife, motion-triggered,
+     infrared, or automatic cameras).
+   - Camera traps contribute meaningfully to ecological inference.
+
+────────────────────────
+EXCLUSION CRITERIA
+────────────────────────
+
+FAIL if the abstract clearly indicates ANY of the following:
+
+1. Study type & data:
+   - Non-empirical article types without original data collection.
+
+2. Target organisms only include:
+   - Invertebrates only.
+   - Plants or other non-animal focal taxa only.
+   - Humans, vehicles, or livestock only.
+   - Fully marine or freshwater systems with no terrestrial component.
+   - Humans, vehicles, or infrastructure.
+   - Domestic animals studied ONLY in managed or human-dependent contexts,
+     including:
+     * Household pets
+     * Livestock (e.g., cattle, sheep, horses) in agricultural systems
+     * Farmed, ranched, or confined animals
+     * Animals studied solely for production, husbandry, or veterinary purposes.
+
+3. Non-ecological or technical primary focus:
+   - Studies primarily focused on method development, technology,
+     or technical performance rather than ecological inference, including:
+       * Method comparison or validation without ecological outcomes.
+       * Machine learning, computer vision, or modeling studies focused on
+         algorithm accuracy rather than wildlife ecology.
+       * Sensor, tool, or software development with minimal ecological analysis.
+       * Sampling design or workflow optimization without ecological results.
+
+4. Camera trapping use:
+   - Camera trapping not mentioned.
+   - Camera trapping is incidental, supplementary, or used only for validation.
+   - Captive, laboratory-only, or zoo-based studies.
+
+────────────────────────
+AMBIGUITY HANDLING (CRITICAL)
+────────────────────────
+
+- FAIL only when an exclusion criterion is clearly and unambiguously met.
+- If camera trapping and ecological outcomes are both present, do NOT exclude
+  solely due to the presence of technical or methodological components.
+- If wildlife ecology and another focal system (e.g., disease, methods)
+  are both present, classify as UNCERTAIN unless wildlife ecology is
+  clearly the dominant focus.
+- Mixed-scope studies (e.g., ecology + methods, vertebrates + plants) should
+  generally be classified as UNCERTAIN unless exclusion is explicit.
+- When uncertainty exists, choose UNCERTAIN rather than FAIL or PASS.
+
+────────────────────────
+CONFIDENCE CALIBRATION
+────────────────────────
+
+Assign confidence conservatively:
+
+- 90–100: Scope, taxa, methods, and ecological focus are all explicit and aligned.
+- 70–89: Mostly clear, minor ambiguity in scope or methods.
+- 40–69: Mixed focus, partial information, or unclear primacy of camera trapping
+         or target organisms.
+- <40: High uncertainty; abstract insufficient for reliable classification.
+
+Avoid assigning 100% confidence unless exclusion or inclusion is unequivocal.
+
+────────────────────────
+OUTPUT RULES
+────────────────────────
+
+Return the following fields EXACTLY:
+
+- abstract_decision: PASS, FAIL, or UNCERTAIN
+- confidence: numeric value from 0 to 100
+- abstract_reason_tag:
+  * REQUIRED if abstract_decision = FAIL
+  * Leave EMPTY otherwise
+  * Use ONLY these tags:
+    - study_type
+    - target_organism
+    - ecological_scope
+    - sampling_method
+  * Separate multiple tags with ";" (no spaces)
